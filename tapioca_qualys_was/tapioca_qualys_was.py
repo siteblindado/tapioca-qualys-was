@@ -17,10 +17,15 @@ class Qualys_wasClientAdapter(JSONAdapterMixin, TapiocaAdapter):
         params = super(Qualys_wasClientAdapter, self).get_request_kwargs(
             api_params, *args, **kwargs)
 
-        
         params['auth'] = HTTPBasicAuth(
             api_params.get('user'), api_params.get('password'))
-        
+
+        if 'headers' not in params:
+            params['headers'] = {}
+
+        params['headers'].update({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'})
 
         return params
 
