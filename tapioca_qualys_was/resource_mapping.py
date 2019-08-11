@@ -12,7 +12,7 @@ RESOURCE_MAPPING = {
         'method': ['GET', 'POST']
     },
     'get_web_application_details': {
-        'resource': '/qps/rest/3.0/get/was/webapp/',
+        'resource': '/qps/rest/3.0/get/was/webapp/{id}',
         'docs': 'https://www.qualys.com/docs/qualys-was-api-user-guide.pdf',
         'method': ['POST']
     },
