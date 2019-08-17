@@ -14,7 +14,7 @@ RESOURCE_MAPPING = {
     'get_web_application_details': {
         'resource': '/qps/rest/3.0/get/was/webapp/{id}',
         'docs': 'https://www.qualys.com/docs/qualys-was-api-user-guide.pdf',
-        'method': ['POST']
+        'method': ['GET']
     },
     'create_web_application': {
         'resource': '/qps/rest/3.0/create/was/webapp',
