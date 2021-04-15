@@ -196,6 +196,11 @@ RESOURCE_MAPPING = {
         'docs': 'https://www.qualys.com/docs/qualys-was-api-user-guide.pdf',
         'method': ['POST']
     },
+    'delete_reports': {
+        'resource': '/qps/rest/3.0/delete/was/report',
+        'docs': 'https://www.qualys.com/docs/qualys-was-api-user-guide.pdf',
+        'method': ['POST']
+    },
     'create_report': {
         'resource': '/qps/rest/3.0/create/was/report',
         'docs': 'https://www.qualys.com/docs/qualys-was-api-user-guide.pdf',
