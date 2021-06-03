@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
+import subprocess
 
 try:
     from setuptools import setup
@@ -27,14 +27,27 @@ test_requirements = [
 
 ]
 
+def _exec(cmd):
+    try:
+        stdout = subprocess.check_output(cmd, shell=True,
+                                         universal_newlines=True)
+    except subprocess.CalledProcessError as e:
+        stdout = e.output
+    lines = stdout.splitlines()
+    return [line.rstrip() for line in lines if line.rstrip()]
+
 
 def get_version(package):
     """
     Return package version as listed in `__version__` in `init.py`.
     """
     init_py = open(os.path.join(package, '__init__.py')).read()
-    return re.search("^__version__ = ['\"]([^'\"]+)['\"]",
+    head_sha = _exec("git rev-list -n 1 HEAD")[0]
+    count_sice = _exec("git rev-list --count HEAD \"^{head_sha}\"".format(head_sha=head_sha))
+    version = re.search("^__version__ = ['\"]([^'\"]+)['\"]",
                      init_py, re.MULTILINE).group(1)
+
+    return version + '.' + str(count_sice[0])
 
 
 def get_author(package):

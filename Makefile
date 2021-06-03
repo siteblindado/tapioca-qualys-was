@@ -55,8 +55,8 @@ docs:
 	open docs/_build/html/index.html
 
 release: clean
-	python setup.py sdist bdist_wheel
-	twine upload dist/*
+	python setup.py bdist_wheel
+	twine upload --repository codeartifact dist/*
     
 release-test: clean
 	python setup.py sdist bdist_wheel
